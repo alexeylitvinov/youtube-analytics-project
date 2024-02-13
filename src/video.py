@@ -8,8 +8,8 @@ class Video:
         try:
             self.video = Channel.get_service().videos().list(part='snippet,statistics', id=self.video_id).execute()
             if not self.video['items']:
-                InstantiateApiError()
-        except Exception as ex:
+                raise InstantiateApiError('ApiError: несуществующий video_id')
+        except InstantiateApiError as ex:
             print(f'{ex} - "{self.video_id}"')
             self.title = None
             self.url = None

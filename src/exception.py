@@ -1,4 +1,3 @@
-class InstantiateApiError:
-    def __init__(self, message='InstantiateApiError: несуществующий video_id'):
+class InstantiateApiError(Exception):
+    def __init__(self, message):
         self.message = message
-        raise Exception(self.message)
